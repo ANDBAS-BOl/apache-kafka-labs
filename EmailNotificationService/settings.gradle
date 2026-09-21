@@ -1,0 +1,4 @@
+rootProject.name = 'EmailNotificationService'
+
+// Composite build: el contrato compartido (ProductCreatedEvent) vive en Core.
+includeBuild '../Core'

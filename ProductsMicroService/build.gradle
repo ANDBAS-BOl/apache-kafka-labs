@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.13'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.appandres'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	mapstructVersion = "1.5.2.Final"
+	lombokMapstructBindingVersion = "0.2.0"
+}
+
+dependencies {
+	// Dominio compartido (Published Language) vía composite build
+	implementation 'com.appandres:Core'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.kafka:spring-kafka'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Lombok library for compilation
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	// Also include for test source sets if needed
+	testCompileOnly 'org.projectlombok:lombok:1.18.30'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	//mapstruct
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

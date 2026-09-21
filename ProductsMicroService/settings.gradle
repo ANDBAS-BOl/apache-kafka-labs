@@ -1,0 +1,5 @@
+rootProject.name = 'ProductsMicroService'
+
+// Composite build: incluimos el proyecto Core (carpeta hermana) como build independiente.
+// Gradle sustituye automáticamente la dependencia "com.appandres:Core" por este proyecto.
+includeBuild '../Core'

@@ -1,0 +1,5 @@
+rootProject.name = 'DepositService'
+
+// Shared Kernel local: sustituye la dependencia com.appsdeveloperblog.payments.ws:core
+// por el proyecto ../core (composite build), sin necesidad de publicarlo en mavenLocal.
+includeBuild '../core'

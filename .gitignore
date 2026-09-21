@@ -1,0 +1,36 @@
+# --- Gradle ---
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# --- Java ---
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.log
+
+# --- IDE ---
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+/out/
+
+# --- OS ---
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# --- Herramientas de desarrollo local ---
+.claude/
+CLAUDE.md
+
+# --- Vive en su propio repositorio: github.com/ANDBAS-BOl/saga-pattern ---
+SagaPattern/
+
+# --- Servicio mock de terceros (ver README) ---
+mockservice/
+
+# Documento personal de repaso para entrevistas (no publicar)
+doc_refuerzo.md

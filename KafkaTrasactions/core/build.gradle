@@ -1,0 +1,26 @@
+plugins {
+	id 'java-library'
+}
+
+group = 'com.appsdeveloperblog.payments.ws'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+	withSourcesJar()
+}
+
+repositories {
+	mavenCentral()
+}
+
+// Shared Kernel / Published Language: tipos compartidos entre los bounded contexts
+// (deposit, withdrawal, transfer). Sin dependencias de framework a propósito.
+dependencies {
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
