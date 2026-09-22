@@ -47,7 +47,7 @@ Consume `ProductCreatedEvent` y simula el envío de una notificación.
 - Configuración explícita de `ConsumerFactory` y del *consumer group*.
 - Deserialización JSON con paquetes de confianza (`trusted.packages`).
 
-### 4. `KafkaTrasactions` — transacciones y Outbox
+### 4. `KafkaTransactions` — transacciones y Outbox
 Operaciones bancarias (transferencia = retiro + depósito) donde **ambos eventos se publican o no se publica ninguno**.
 
 | Servicio | Rol |
@@ -89,7 +89,7 @@ cd EmailNotificationService && ./gradlew bootRun
 ```
 
 > **Importante:** no muevas ni renombres las carpetas. `ProductsMicroService` y `EmailNotificationService`
-> referencian `../Core`, y los servicios de `KafkaTrasactions` referencian `../core`, mediante
+> referencian `../Core`, y los servicios de `KafkaTransactions` referencian `../core`, mediante
 > *composite builds* con rutas relativas.
 
 ### 3. Servicio mock (opcional)
@@ -101,4 +101,4 @@ appsdeveloperblog y no se incluye aquí; cualquier stub que responda por código
 
 ## Documentación
 
-- [`docs/arquitectura.md`](docs/arquitectura.md) — convención de capas hexagonales usada en todos los módulos.
+- [`docs/arquitectura.md`](docs/arquitectura.md) — convención de capas hexagonales, la estructura de referencia y en qué se aparta cada módulo.

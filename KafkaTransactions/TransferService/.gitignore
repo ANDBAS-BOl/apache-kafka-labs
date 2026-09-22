@@ -9,6 +9,10 @@ build/
 *.iml
 *.ipr
 out/
+# El paquete de adaptadores de salida se llama 'out' por convencion hexagonal:
+# sin estas negaciones, la regla de IntelliJ de arriba se lo traga entero.
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 ### Eclipse / STS ###
 .apt_generated
