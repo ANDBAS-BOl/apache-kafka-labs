@@ -10,9 +10,9 @@ conoce a Spring ni a Kafka**. Kafka entra siempre por un adaptador, de entrada
 |---|---|---|
 | `domain` | Modelo, casos de uso y los puertos (`api` = entrada, `spi` = salida). Java puro. | De nada del framework. |
 | `application` | Orquesta: DTOs, handlers y mappers entre el mundo exterior y el dominio. | Del dominio. |
-| `infraestructure` | Adaptadores concretos: REST, JPA, Kafka, clientes HTTP y la configuración de beans. | De todo. |
+| `infrastructure` | Adaptadores concretos: REST, JPA, Kafka, clientes HTTP y la configuración de beans. | De todo. |
 
-La dirección de las dependencias apunta siempre **hacia dentro**: `infraestructure` →
+La dirección de las dependencias apunta siempre **hacia dentro**: `infrastructure` →
 `application` → `domain`. El dominio se instancia a mano en una clase de configuración
 (`BeanConfiguration`), precisamente para que no necesite anotaciones de Spring.
 
@@ -33,7 +33,7 @@ src/main/java/<paquete>/
 │   ├── dto/request/    # DTOs de entrada
 │   ├── handler/        # Coordinación entre el borde y el dominio
 │   └── mapper/         # DTO ↔ modelo de dominio
-└── infraestructure/
+└── infrastructure/
     ├── adapters/in/rest/    # Controladores REST y manejo de errores HTTP
     ├── adapters/out/        # Implementaciones de los puertos SPI
     │   ├── jpa/             # Persistencia (entidad, repositorio, mapper, adaptador)
@@ -58,11 +58,6 @@ conserva la forma que le corresponde.
 |---|---|
 | `ProductsMicroService` | Estructura de referencia completa. Adaptador de salida Kafka (productor). |
 | `TransferService` | Estructura de referencia completa, más los adaptadores de Outbox y el relay. |
-| `EmailNotificationService` | Variante: los puertos viven en `application/port/{input,output}` en vez de `domain/{api,spi}`, y los adaptadores cuelgan de `infraestructure/{http,kafka,out/jpa}`. |
+| `EmailNotificationService` | Variante: los puertos viven en `application/port/{input,output}` en vez de `domain/{api,spi}`, y los adaptadores cuelgan de `infrastructure/{http,kafka,out/jpa}`. |
 | `DepositService`, `WithdrawalService` | Deliberadamente mínimos: solo un `@KafkaListener` y su configuración. Su papel en el laboratorio es consumir con `read_committed`, no demostrar capas. |
 | `Core`, `KafkaTransactions/core` | Sin capas: son *shared kernel*, únicamente eventos y excepciones compartidas. |
-
-## Nota sobre `infraestructure`
-
-El paquete se llama `infraestructure`, con la grafía española. Es intencionado y
-consistente en todos los módulos; no es una errata puntual.

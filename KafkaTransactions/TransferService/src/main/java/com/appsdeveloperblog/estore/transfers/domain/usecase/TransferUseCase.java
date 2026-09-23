@@ -25,7 +25,7 @@ import java.util.UUID;
  * no queda nada que publicar (consistencia garantizada, sin doble escritura).
  * <p>
  * Dominio puro: no contiene anotaciones de framework. El cableado se realiza en
- * {@code infraestructure.configuration.BeanConfiguration}.
+ * {@code infrastructure.configuration.BeanConfiguration}.
  */
 public class TransferUseCase implements ITransferServicePort {
 
